@@ -4,6 +4,9 @@
     Author     : Hilary
 --%>
 
+<%@page import="com.hilarysturges.Salt"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="com.hilarysturges.Entry"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page errorPage = "errorPage.jsp" %>
 <jsp:useBean id="user" scope="session" class="com.hilarysturges.User" />
@@ -17,15 +20,19 @@
     </head>
     <body>
         <%
-          session.setMaxInactiveInterval(1800);  // 30 minute time out
-          user.login(user.getName(), user.getPassword());
+          session.setMaxInactiveInterval(1800);  
+          Salt salt = new Salt();
+          String saltedPassword = user.getPassword().concat(salt.getSalt());
+          int hashedAndSalted = saltedPassword.hashCode();
+          user.login(user.getName(), String.valueOf(hashedAndSalted));
           if(user.isLoggedIn()) {
-            response.sendRedirect("index.jsp");  // Tell the browser to go to this page
-           return; // do nothing more;
-          } else
+            user.setEntriesFromDB();
+            response.sendRedirect("index.jsp");  
+            return; 
+          } else {
             out.println("Invalid login<br />");
-          
-         
+            out.println("<a href = 'login.html'>Try Again</a>");
+          }
         %>
     </body>
 </html>
