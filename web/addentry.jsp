@@ -20,7 +20,7 @@
            entry.setUser_id(user.getId());
            entry.setDateAndId();
            user.setEntry(entry);
-           response.sendRedirect("viewentries.jsp");
+           response.sendRedirect("index.jsp");
             %>
     </body>
 </html>

@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Aug 3, 2019, 2:30:34 PM
+    Author     : Hilary
+*/
+
+body {
+    background-image: url("/Images/header.png");
+    background-repeat: no-repeat;
+    font-family: Arial;
+}
+
+.messages {
+    text-align: center;
+    padding-top: 220px;
+    color: red;
+}
+
+.headerwithmessages {
+    text-align: center;
+    padding-top: 20px;
+    color: #83C4AF;
+}
+
+header {
+    text-align: center;
+    padding-top: 220px;
+    color: #83C4AF;
+}
+
+nav {
+    float: left;
+    margin-left: 50px;
+    color: #83C4AF;
+}
+
+h3 {
+    text-align: center;
+}
+
+main {
+    float: right;
+    margin-right: 200px;
+    border: 5px solid #95DFC7;
+}
+
+footer {
+    position: absolute;
+    bottom: 50px;
+    width: 100%;
+    height: 50px;
+    background-color: #95DFC7;
+}
+
+.accountlinks {
+    text-align: center;
+    line-height: 50px;
+    color: white;
+}
+
+
+.addnewentry {
+    text-align: center;
+}
+
+.entrytextarea {
+    height: 100%;
+    width: 100%;
+    display: block;
+}
+

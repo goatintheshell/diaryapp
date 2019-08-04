@@ -9,15 +9,18 @@ and open the template in the editor.
         <title>Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css" type="text/css">
     </head>
     <body>
+        <header>
         <h1>Please login below:</h1>
         <form name="login" action="login.jsp" method="POST">
         Username: <input type="text" name="userName" value="username" />
         Password: <input type="password" name="password" value="password" />
         <input type="submit" value="Submit" name="submit" />
         <input type="reset" value="Reset" name="reset" />
-        </form> 
+        </form> <br><br>
         <a href="newuser.jsp">Create new account</a>
+        </header>
     </body>
 </html>
