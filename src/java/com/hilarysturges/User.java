@@ -88,7 +88,8 @@ public class User {
         try{
             
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement prep = conn.prepareStatement("SELECT u.userNAME, u._id, p.password FROM User u JOIN Password p ON u._id = p.name_id WHERE u.userNAME=? AND p.password=?");  
           prep.setString(1,name);
@@ -122,7 +123,8 @@ public class User {
         boolean ifExists = false;
         try{
         Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement userCheck = conn.prepareStatement("SELECT * FROM User where userNAME = ?");  
           userCheck.setString(1,name);
@@ -143,7 +145,8 @@ public class User {
         int name_id = 0;
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement userPrep = conn.prepareStatement("INSERT INTO User (userNAME) VALUES (?)");  
           userPrep.setString(1,name);
@@ -178,7 +181,8 @@ public class User {
     public void changeUsername(String name) {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement userPrep = conn.prepareStatement("UPDATE User SET userNAME = ? WHERE _id = ?");  
           userPrep.setString(1,name);
@@ -197,7 +201,8 @@ public class User {
     public void changePassword(String password) {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement userPrep = conn.prepareStatement("UPDATE Password SET password = ? WHERE name_id = ?");  
           userPrep.setString(1, password);
@@ -216,7 +221,8 @@ public class User {
     public void deleteUser() {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement passwordPrep = conn.prepareStatement("DELETE FROM Password WHERE name_id = ?");  
           passwordPrep.setInt(1,_id);
@@ -240,7 +246,8 @@ public class User {
         entries = new ArrayList<Entry>();
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement getEntry = conn.prepareStatement("SELECT * FROM Entry WHERE user_id = ?");  
           getEntry.setInt(1,_id);

@@ -76,7 +76,8 @@ public class Entry {
     public void setDateAndId() {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement entryPrep = conn.prepareStatement("SELECT * FROM Entry ORDER BY _id DESC LIMIT 1");  
           
@@ -98,7 +99,8 @@ public class Entry {
     public void addEntry(int id) {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement entryPrep = conn.prepareStatement("INSERT INTO Entry (words, user_id, name) VALUES (?,?,?)");  
           entryPrep.setInt(2, id);
@@ -119,7 +121,8 @@ public class Entry {
     public void removeFromDB() {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement entryPrep = conn.prepareStatement("DELETE FROM Entry WHERE _id = ?");  
           entryPrep.setInt(1, _id);
@@ -138,7 +141,8 @@ public class Entry {
     public void updateInDB() {
         try { 
           Class.forName("com.mysql.cj.jdbc.Driver");
-          Connection conn = DriverManager.getConnection("jdbc:mysql://secretkeeperapp.cbk5oil2vwgg.us-east-1.rds.amazonaws.com:3306/secretKeeper", "hilarysaurus", "eSJdRDSsvpnh0ay3OYvB");
+          DatabaseConnection dBConn = new DatabaseConnection();
+          Connection conn = DriverManager.getConnection(dBConn.getUrl(), dBConn.getUsername(), dBConn.getPassword());
          
           PreparedStatement entryPrep = conn.prepareStatement("UPDATE Entry SET words = ? WHERE _id = ?");  
           entryPrep.setString(1, words);
